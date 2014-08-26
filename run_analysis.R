@@ -7,8 +7,12 @@ run_analysis <- function() {
   x_tmp1 <- read.table("test/X_test.txt")
   x_tmp2 <- read.table("train/X_train.txt")
   x_data <- rbind(x_tmp1, x_tmp2)
+  
+  ## Include only meassures for features we are interested in.
   features <- read.table("features.txt")
-  names(x_data) <- features[,2]
+  mean_stdev <- grep("-mean\\(\\)|-std\\(\\)", features[, 2])
+  x_data <- x_data[, mean_stdev]
+  names(x_data) <- features[mean_stdev, 2]
   
   ## activity types
   y_tmp1 <- read.table("test/Y_test.txt")
@@ -27,10 +31,6 @@ run_analysis <- function() {
   ### Now we want to have the data in this order: 1) subject, 2) activity type, 3) features results.
   all_data <- cbind(s_data, y_data2, x_data)
   
-  ### Remove all rows except those that represent Mean and StDev.
-  mean_names <- as.data.frame(features[grep("mean()",features$V2),2])
-  stdev_names <- features[grep("std()",features$V2),2]
-  
-  final_data <- all_data[colnames(all_data %in% c("Subject", "Activity", mean_names))]
-  
+  ## Print the output file and we are ready.
+  write.table(all_data, "UCI_HAR_Dataset_Clean.txt")
 }
