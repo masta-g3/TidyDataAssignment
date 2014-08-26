@@ -4,7 +4,7 @@ TidyDataAssignment
 ### Description
 This repository contains the run_analysis.R script, which is utilized to convert the UCI HAR Dataset files into a tidy data file. This file summarized the information available by only showing the mean and standard deviation of the different features provided in the dataset.
 
-##Instructions
+###Instructions
 To run the script, make sure you place it within the "UCI HAR Dataset" directory. After this simply source it and run it without passing any parameters. It will do the following:
 1. Read and merge the training datasets.
 2. Add the corresponding lables for each activity and for each feature.
