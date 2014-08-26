@@ -48,4 +48,4 @@ These signals were used to estimate variables of the feature vector for each pat
 * fBodyGyroMag
 * fBodyGyroJerkMag
 
-For this analysis, only the mean and standard deviation of the feature results are utilized.
+For this analysis, only the **mean** and **standard deviation** of the feature results are utilized.
